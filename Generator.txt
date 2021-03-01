@@ -1,0 +1,122 @@
+->Generator
+---------------
+-generator is a function. if any function has 'yield' keyword is know as generator function.
+-it is more faster than iterator.
+-generator inside iterator functionalities existed.
+-generator function can have many yield statements.
+ex:
+def gen_fun():
+	n=1
+	print('first number')
+	yield n
+	n+=1
+	print('second number')
+	yield n
+	n+=1
+	print('third number')
+	yield n
+
+-to execute generator function first we have to create iterator object.
+ex:
+iter_obj = iter(gen_fun())
+in the above example 'iter_obj' is a iterator object.
+-to print function logic/values, we have to use "next()" with iter object.
+ex:
+print(next(iter_obj))
+-whenever python interpreter will touch to the yield statement. it will print the value without 
+ terminating the execution and it will pause the execution.
+-again we will run next() it will start wr it got pause on that place to next yield statement.
+
+ex:
+def gen_fun():
+	n=1
+	print('first number')
+	yield n
+	n+=1
+	print('second number')
+	yield n
+	n+=1
+	print('third number')
+	yield n
+
+a=iter(gen_fun())
+print(next(a))
+print(next(a))
+print(next(a))
+print(next(a))
+
+-we can execute/run this programme with the help of while looping
+ex:
+def gen_fun():
+	n=1
+	print('first number')
+	yield n
+	n+=1
+	print('second number')
+	yield n
+	n+=1
+	print('third number')
+	yield n
+
+a=iter(gen_fun())
+while True:
+    try:
+        print(next(a))
+    except:
+        break
+
+-we can execute/run this programme with the help of for loop also
+ex:
+def gen_fun():
+	n=1
+	print('first number')
+	yield n
+	n+=1
+	print('second number')
+	yield n
+	n+=1
+	print('third number')
+	yield n
+
+a=iter(gen_fun())
+for i in a:
+    print(i)
+
+->range programme using generator concept
+ex:
+def gen_fun(max):
+    n=0
+    while True:
+        try:
+            if n<=max:
+                yield n
+                n+=2
+            else:
+                raise StopIteration
+        except:
+            break
+
+a=gen_fun(100)
+while True:
+    try:
+        print(next(a))
+    except:
+        break
+
+ex:
+def gen_fun(max):
+    for i in range(max):
+        if i%2==0:
+            yield i
+        else:
+            continue
+
+a=gen_fun(100)
+while True:
+    try:
+        print(next(a))
+    except:
+        break
+
+
+

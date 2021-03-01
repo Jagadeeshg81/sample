@@ -1,0 +1,106 @@
+Data Abstraction:
+-------------------
+-thic concept will help to hide the class properties.
+-and in another way we can say private also. indications is '__'
+-if we will hide, class properties we can't access outside of the class
+-and to access inside of class also we have to follow different syntax.
+
+ex:
+class Oyo:
+	__a=10
+	b=20
+	def m1(self):
+		print('m1 method')
+	def m2(self):
+		print(Oyo.__a)
+		print(Oyo.b)
+		print('m2 method')
+
+obj=Oyo()
+obj.m1()
+obj.m2()
+
+ex:
+class Oyo:
+    __a=10
+    b=20
+    def m1(self):
+        print('m1 method')
+    def m2(self):
+        print(Oyo.__a)
+        print(Oyo.b)
+        print('m2 method')
+
+class Ibis(Oyo):
+    def m3(self):
+        print('ibis class')
+        print(Ibis.b)
+        print(Ibis.__a)
+
+#obj=Oyo()
+#obj.m1()
+#obj.m2()
+obj=Ibis()
+obj.m3()
+
+-in different way we can access hidden properties outisde of the class even too.
+ex:
+class Oyo:
+    __a=10
+    b=20
+    def m1(self):
+        print('m1 method')
+    def m2(self):
+        print(Oyo.__a)
+        print(Oyo.b)
+        print('m2 method')
+
+class Ibis(Oyo):
+    def m3(self):
+        print('ibis class')
+        print(Ibis.b)
+        print(self._Oyo__a)#self(object)._Oyo__a
+
+#obj=Oyo()
+#obj.m1()
+#obj.m2()
+obj=Ibis()
+obj.m3()
+print('outside of the class')
+print(obj._Oyo__a)
+
+
+ex:
+class Oyo:
+    def __method1(self):
+        print('define method1')
+    
+    def method2(self):
+        print('define method2')
+
+obj=Oyo()
+obj.method2()
+obj._Oyo__method1()
+
+ex:
+class Oyo:
+    def __method1(self):
+        print('define method1')
+    def method2(self):
+        self.__method1()
+        print('define method2')
+
+obj=Oyo()
+obj.method2()
+obj._Oyo__method1()
+
+ex:
+class Arjunamma:
+    def met(self):
+        print('in met method')
+    def __met1(self):
+        print('in met1 method')
+
+junk1=Arjunamma()
+junk1.met()
+junk1._Arjunamma__met1()

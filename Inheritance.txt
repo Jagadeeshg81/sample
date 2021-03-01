@@ -1,0 +1,255 @@
+inheritance:
+-------------
+to access parent class method/variables (properties) into the child class
+inheritance is two types:
+i. Has a relationship
+ii. is a relationship
+
+Has a Relationship
+------------------
+here we no need to import A class into the B class. in the below example just we are accessing variables/properties
+with class name or object name.
+
+ex:
+class A:
+	a=10
+	b=20
+	def display_a(self):
+		print(A.a)
+
+class B:
+	def display(self):
+		print(A.a)
+		print(A.b)
+	def calling_a_method(self):
+		obj_a=A()
+		obj_a.display_a()
+
+obj=B()
+obj.display()
+
+in the above example "A" is parent class and "B" is child class of A. we can see inside B class we are able to
+access A class properties/variables.
+
+Is a Relationship
+-----------------
+in this concept we need to import class A into the class B.
+these are 5 types:
+a. single inheritance
+b. multilevel inheritance
+c. multiple inheritance
+d. heirarchical inheritance
+e. hybrid inheritance
+
+a. single inheritance:
+---------------------------
+inheriting the parent class properties/variables into the child class(single parent class) is called 
+single level inheritance.
+
+ex:
+class A:
+	a=10
+	b=20
+
+class B(A):
+	def display(self):
+		print(B.a)
+		print(B.b)
+
+obj=B()
+obj.display()
+
+b. Multilevel inheritance:
+---------------------------
+inheriting the grandparent class properties into parent class and parent class properties into child class is 
+called multilevel inheritance.
+
+ex:
+class A:
+	def m1(self):
+		print('A class method')
+	def display_A(self):
+		self.m1()
+
+class B(A):
+	def m2(self):
+		print('B class method')
+	def display_B(self):
+		self.m1()
+		self.m2()
+class C(B):
+	def m3(self):
+		print('C class method')
+	def display_C(self):
+		self.m3()
+		self.m2()
+		self.m1()
+
+obj=C()
+#obj.display_C()
+#obj.display_B()
+obj.display_A()
+
+c. Multiple Inheritance:
+----------------------------
+in this concept two or more parent classes and one child class
+inheriting the parent classes behaviours/properties into the one child class is called
+multiple inheritance
+
+ex:
+class Father:
+	def father_method(self):
+		print('father calss')
+class Mother:
+	def mother_method(self):
+		print('mother class')
+class Child(Father, Mother):
+	def child_method(self):
+		self.father_method()
+		self.mother_method()
+
+obj=Child()
+obj.child_method()
+
+
+ex:
+class Father:
+        def father_method(self):
+                print('father calss')
+class Mother:
+        def mother_method(self):
+                print('mother class')
+class Uncle:
+        def uncle_method(self):
+                print('ya alludu kuthuru available')
+class Child(Father, Mother, Uncle):
+        def child_method(self):
+                self.father_method()
+                self.mother_method()
+                self.uncle_method()
+
+obj=Child()
+obj.child_method()
+
+ex:
+class Father:
+        def father_method(self):
+                print('father calss')
+class Mother:
+        def mother_method(self):
+                print('mother class')
+class Uncle:
+        def uncle_method(self):
+                print('ya alludu kuthuru available')
+class Child(Father, Mother, Uncle):
+        def child_method(self):
+                self.father_method()
+                self.mother_method()
+
+obj=Child()
+obj.child_method()
+
+d. Heirarchical Inheritance:
+------------------------------
+here one parent class and two or more child classes is called heirarchical inheritance
+to inherit the parent class properties intot the child classes is called HI
+ex:
+class GrandFather:
+        def grandfather_method(self):
+                print('grand father class')
+
+class Father1(GrandFather):
+        def father1_method(self):
+                print('father1 class')
+        def display_father1(self):
+                self.grandfather_method()
+                self.father1_method()
+		
+class Father2(GrandFather):
+        def father2_method(self):
+                print('father2 class')
+        def display_father2(self):
+                self.grandfather_method()
+                self.father2_method()
+
+obj=Father1()
+obj.display_father1()
+
+f2=Father2()
+f2.display_father2()
+
+ex:
+class GrandFather:
+        def grandfather_method(self):
+                print('grand father class')
+
+class Father1(GrandFather):
+        def father1_method(self):
+                print('father1 class')
+        def display_father1(self):
+                self.grandfather_method()
+                self.father1_method()
+		
+class Father2(Father1):
+        def father2_method(self):
+                print('father2 class')
+        def display_father2(self):
+                self.grandfather_method()
+                self.father2_method()
+
+obj=Father1()
+obj.display_father1()
+
+f2=Father2()
+f2.display_father2()
+
+e. Hybrid Inheritance:
+---------------------------
+collection of single, multilevel, multiple and heirarchical inheritances is called
+hybrid inheritance
+
+f. Cyclic Inheritance:
+--------------------------
+to inherit the parent class into the child class and child class inherit the parent class.
+-python won't support cyclic inheritance.
+ex:
+class Father1(Father2):
+        def father1_method(self):
+                print('father1 class')
+        def display_father1(self):
+                self.father1_method()
+		
+class Father2(Father1):
+        def father2_method(self):
+                print('father2 class')
+        def display_father2(self):
+                self.father2_method()
+
+obj=Father1()
+obj.display_father1()
+
+f2=Father2()
+f2.display_father2()
+
+
+Using Constructor
+-------------------
+ex: 
+class A:
+	def __init__(self,a,b):
+		self.a=a
+		self.b=b
+class B(A):
+        def __init__(self,a,b,c):
+             A.__init__(self,a,b)
+             self.c=c
+        def display(self):
+                print(self.a)
+                print(self.b)
+                print(self.c)
+
+
+
+obj=B(100,200,300)
+obj.display()
+

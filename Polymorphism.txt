@@ -1,0 +1,84 @@
+-->Polymorphism
+------------------
+-polymorphism means many methods/properties with same logic or same functionality is called polymorphism.
+-poly means "many"
+-morphism means "links(functionalities)"
+-these concept is handled by two sub concepts.
+that is:
+i. Method overloading
+ii. Method overriding
+
+-> Method overloading:
+----------------------
+-in this concept methods has same name and logic with same number of parameters or different number of parameters and these
+  methods should be in same class is called method overloading.
+ex:
+class A:
+	def meth(self):
+		print("first method")
+	def meth(self,a):
+		print("second method")
+	def meth(self,a,b):
+		print("third method")
+
+mo=A()
+mo.meth()
+
+-python won't support method overloading
+-in the above example we are trying to execute first method but it is taking last method in the class.
+
+-> Method Overriding:
+-----------------------
+-in this concept methods has same name and logic with same number of parameters or different number of parameters and these
+ methods should be in one is parent class and another one is child class.
+ex:
+class A:
+	def meth(self):
+		print('parent method')
+
+class B(A):
+	def meth(self):
+		print('child method')
+
+ob=B()
+ob.meth()
+
+-we can execute parent method with the help of "super()" function.
+
+ex:
+class A:
+	def meth(self):
+		print('parent method')
+
+class B(A):
+	def meth(self):
+		print('child method')
+	def display(self):
+		super().meth()
+		self.meth()
+	
+ob=B()
+ob.display()
+
+ex:
+class A:
+    def __init__(self,a,b):
+        self.a=a
+        self.b=b
+    def display(self):
+        print('parent method')
+
+class B(A):
+    def __init__(self,a,b):
+        #A.__init__(self,a,b)
+        super().__init__(a,b)
+    def display(self):
+        print('child method')
+
+    def metho_display(self):
+        super().display()
+        self.display()
+
+ob=B(10,20)
+ob.metho_display()
+

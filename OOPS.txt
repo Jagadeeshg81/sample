@@ -1,0 +1,538 @@
+OOPS
+------
+-object oriented programmings 
+-suppose if you want to write some business applications we have to follow some rules.
+-java, c, c++, ... all languages will follow the oops principles.
+-to use of oops concept we can write business logic/application with proper setup.
+-with the oops concept we can wrapp the data in single unit.
+-secure variables we can hide with the oops concept
+-we can use parent class functionalities/operations with the help of oops concept.
+1. Encapsulation(Data Encapsulation)-done
+2. Class-done
+3. Object-done
+4. Inheritance-done
+5. Polymorphism-done
+6. Data Abstraction
+
+->1. Encapsulation
+------------------------
+wrapping the data stores into a single unit.
+
+ex:
+class empdata:
+    empno=10
+    empname='sai'   
+    empsal=100000
+    def display():
+        print(empno)
+        print(empname)
+        print(empsal)
+
+->2. Class
+---------------
+to keep related data into a single unit we have to use class keyword/concept.
+-this concept will help to find the related data easily in the file.
+-if we want to write code into the unit we have to use "class" keyword.
+syntax:
+class <class-name>:
+	'''class document string'''
+	---------------------------------
+	|<variables/methods declrations>|
+	|<class body>                   |
+	---------------------------------
+
+function syntax:
+def <function-name>():
+	'''doc string'''
+	<function body>
+
+ex:
+class car:
+	parts=[steareing, glasses, battery, .....]
+        fuel="diesel"
+	fndsmfdsaffd='dsa'
+
+        def display(self):
+		print(parts,fuel,fndsmfdsaffd)
+
+
+class building:
+	interiors=['wood work','cats','arunamma',...]
+	connections=['data connection','water connection','tv connection','.'dsafsa]
+	def display(self):
+		print(variable names)
+
+
+class 4th:
+	schoolname='sri sai baba national school'
+	head="python"
+	#common variables
+	def ladies(self):
+		self.rollno=1
+		name='arunamma'
+		self.toppper='arunamma'
+		print(rollno)
+		print(name)
+	def gents(self):
+		rollno=2
+		name='arun'
+		print(rollno,name)
+
+
+self
+------------
+if we are writing a function inside a class means we have to define "self" keyword into the function.
+if we will define any variables with self means easily we can access that variable inside a class but not outside
+a class.
+
+ex:
+----
+
+class sbi:
+	'''sbi bank related logics/data'''
+	name='state bank of india'
+	def details(self):
+		acno=1234
+		self.customer_name='sai'
+		ifsc_code='sbi000123'
+		self.amount=10000		
+
+	def deposit(self):
+		self.amount=self.amount+1000
+
+	def withdraw(self):
+		self.amount=self.amount-100
+
+	def display(self):
+		print(self.customer_name)
+		print(self.amount)
+
+
+->Object
+----------
+whenever we want to access the class of members/methods/variables we have to create one object to that class.
+
+syntax:
+object(indirect address)=class-name()(original address)
+
+-we can create multiple objects for one class
+-everytime created object will get different indirect address
+-with the help of object we can access class variables or methods/members
+-wheverever will create the object with the help of class name, class original address will give it to object that is
+indirect address.
+
+
+ex:
+class SbiBank:
+	'''sbi bank related logics/data'''
+	name='state bank of india'
+	def bankDetails(self):
+		acno=1234
+		self.customer_name='sai'
+		ifsc_code='sbi000123'
+		self.amount=10000
+	def deposit(self):
+		self.amount=self.amount+1000
+
+	def withdraw(self):
+		self.amount=self.amount-100
+
+	def display(self):
+		print(self.customer_name)
+		print(self.amount)
+		#print(acno)
+		print(SbiBank.name)
+
+
+SBIBankObject=SbiBank()
+print(SBIBankObject)
+SBIBankObject.bankDetails()
+SBIBankObject.display()
+SBIBankObject.deposit()
+SBIBankObject.display()
+SBIBankObject.withdraw()
+SBIBankObject.display()
+
+
+-class has 3 types of variables. they are:
+a. static variable
+b. non-static variable
+c. local variable
+
+a.static variable:
+------------------
+-which variables defined inside the class and outisde of the methods is called static variables.
+-when will execute class python interpreter will store the variables into the memory only once
+-these static variables we can access inside a class any where with the help of class name.
+-if we want to access static variables outside of a class means we should call with class name.
+ex:
+class Static:
+	a=10
+	b=20
+	def display(self):
+		print(Static.a)
+		print(Static.b)
+
+zingoy=Static()
+
+ex:
+class Static:
+	a=10
+	b=20
+	def display(self):
+		print(Static.a)
+		print(Static.b)
+
+zingoy=Static()
+print(zingoy)
+print(zingoy.a)
+print(Static.a)
+print(Static.b)
+print(zingoy.b)
+zingoy.display()
+Static.display(zingoy)
+
+
+ex:
+class zingoy:
+    a=50
+    b=100
+    c=500
+    d=1000
+    def display_zingoy_vouchers(self):
+        print(zingoy.a)
+        print(zingoy.b)
+        print(zingoy.c)
+        print(zingoy.d)
+    def display_vouchers_50t0100(self):
+        print(zingoy.a)
+        print(zingoy.b)
+    def display_vouchers_500t01000(self):
+        print(zingoy.c)
+        print(zingoy.d)
+
+zing=zingoy()
+zing.display_zingoy_vouchers()
+print(zingoy.a)   
+
+
+b.non-static variable:
+-------------------------
+-these variables defined methods inside.
+ex:
+class droom:
+	'''
+	   today we got one offer in droom.
+	   product is : helmet
+	   price is : 59
+	'''
+	def product_details(self):
+		self.product='helmet'
+		self.price=59
+
+
+-these variables we can access inside and outside of the class.
+ex:
+class droom:
+	'''
+	   today we got one offer in droom.
+	   product is : helmet
+	   price is : 59
+	'''
+	def product_details(self):
+		self.product='helmet'
+		self.price=59
+	def display(self):
+		print(self.product)
+		print(self.price)
+
+accessing outside of the class
+-------------------------------
+if we want to access non static variables outside of the class, we need to create object. 
+with the help of object we can access.
+ex:
+class droom:
+	'''
+	   today we got one offer in droom.
+	   product is : helmet
+	   price is : 59
+	'''
+	def product_details(self):
+		self.product='helmet'
+		self.price=59
+	def product_name_display(self):
+		print(self.product)
+	def product_price_display(self):
+		print(self.price)
+	def display(self):
+		print(self.product)
+		pritn(self.price)
+
+d=droom()
+d.product_details()
+d.display()
+
+
+ex:
+class droom:
+	'''
+	   today we got one offer in droom.
+	   product is : helmet
+	   price is : 59
+	'''
+	def product_details(self):
+		self.product='helmet'
+		self.price=59
+	def product_name_display(self):
+		print(self.product)
+	def product_price_display(self):
+		print(self.price)
+	def display(self):
+		print(self.product)
+		print(self.price)
+
+d=droom()
+#print(d)
+d.product_details()
+#d.product_price_display()
+print(d.product)
+print(d.price)
+
+
+-we have to define with "self" keyword for these variables.
+ex:
+self.product='helmet'
+self.price=59
+-for non-static variables python interpreter will store when we will execute non-static variables method.
+
+
+static and non-static variables examples:
+---------------------------------------------
+class DhanalaxmiPG:
+	pgowner='sathish'
+	pgcoowner='arunakka'
+
+	def room_c(self):
+		self.persons_count=4
+		self.persons_names=['jagadeesh','arun','sai','avinash']
+
+	def display(self):
+		print(DhanalaxmiPG.pgowner)
+		print(DhanalaxmiPG.pgcoowner)
+		print(self.persons_count)
+		print(self.persons_name)
+
+pg=DhanalaxmiPG()
+pg.display()
+	
+ex:
+class DhanalaxmiPG:
+	pgowner='sathish'
+	pgcoowner='arunakka'
+
+	def room_c(self):
+		self.persons_count=4
+		self.persons_names=['jagadeesh','arun','sai','avinash']
+
+	def display(self):
+		print(DhanalaxmiPG.pgowner)
+		print(DhanalaxmiPG.pgcoowner)
+		print(self.persons_count)
+		print(self.persons_names)
+
+pg=DhanalaxmiPG()
+#calling static variables
+print(DhanalaxmiPG.pgowner)
+print(DhanalaxmiPG.pgcoowner)
+#calling non-static variables
+pg.room_c()
+print(pg.persons_count)
+print(pg.persons_names)
+
+
+ex:
+class DhanalaxmiPG:
+	pgowner='sathish'
+	pgcoowner='arunakka'
+
+	def room_c(self):
+		self.persons_count=4
+		self.persons_names=['jagadeesh','arun','sai','avinash']
+
+	def display(self):
+		print(DhanalaxmiPG.pgowner)
+		print(DhanalaxmiPG.pgcoowner)
+		print(self.persons_count)
+		print(self.persons_names)
+
+pg=DhanalaxmiPG()
+#calling static variables
+print(DhanalaxmiPG.pgowner)
+print(DhanalaxmiPG.pgcoowner)
+#calling non-static variables
+pg.room_c()
+print(pg.persons_count)
+print(pg.persons_names)
+
+
+c. Local variable:
+----------------------
+-these variables defined inside methods and without 'self'
+-these variables we can't access inside a class or outside of the class.
+-these variables will store in memory when will execute variables method.
+
+ex:
+class DhanalaxmiPG:
+    def room_c(self):
+        persons_count=4
+        persons_names=['jagadeesh','arun','sai','avinash']
+        print(persons_count)
+        print(persons_names)
+
+pg=DhanalaxmiPG()
+pg.room_c()
+
+
+static & non-static & local variables example:
+------------------------------------------------
+static
+--------
+ex:
+class snl:
+	a=10
+	b=20
+	c=30
+	def display_static_variables(self):
+		print(snl.a)
+		print(snl.b)
+		print(snl.c)
+
+obj=snl()
+obj.display_static_variables()
+print(snl.a)
+
+non-static
+------------
+ex:
+class snl:
+    def non_static_variables(self):
+        self.a=10
+        self.b=20
+        self.c=30
+    def display_nonstatic_variables(self):
+        print(self.a)
+        print(self.b)
+        print(self.c)
+obj=snl()
+obj.non_static_variables()
+obj.display_nonstatic_variables()
+print(obj.a)
+
+
+local
+-------
+class snl:
+    def local_variables(self):
+        a=10
+        b=20
+        c=30
+        print(a)
+        print(b)
+        print(c)
+    
+obj=snl()
+obj.local_variables()
+
+
+
+
+class snl:
+	a=10
+	b=20
+	c=30
+	def non_static_variables(self):
+		self.aa=100
+		self.bb=200
+		self.cc=300
+	def local_variables(self):
+		aaa=1000
+		bbb=2000
+		ccc=3000
+	def display_static_variables(self):
+		print(snl.a)
+		print(snl.b)
+		print(snl.c)
+	def display_non_static_variables(self):
+		print(self.aa)
+		print(self.bb)
+		print(self.cc)
+
+obj=snl()
+print(snl.a)
+print(obj.a)
+
+
+->constructor
+----------------
+-to execute the non-static variables without executing method.
+-for constructor we have to define one method class inside, that is "__init__(self)"
+ex:
+class snl:
+	def __init__(self):
+		self.a=10
+		self.b=20
+	def display(self):
+		print(self.a)
+		print(self.b)
+
+obj=snl()
+obj.display()
+
+ex:
+class snl:
+	def __init__(sai):
+		sai.a=10
+		sai.b=20
+		print(sai)
+	def display(self):
+		print(self.a)
+		print(self.b)
+		print(self)
+
+obj=snl()
+obj.display()
+print(obj.a)
+print(obj.b)
+
+->Destructor(Garbage collector)
+----------------
+-it will help to remove unusable data inside the file.
+-before removing it will check inside the memory and if that is not usable inside file or anyplace means
+automatically it will remove.
+-for destructor we have to use "__del__"
+ex:
+class snl:
+	def __init__(sai):
+		sai.a=10
+		sai.b=20
+		print(sai)
+	def display(self):
+		print(self.a)
+		print(self.b)
+		print(self)
+	def __del__(self):
+		del self.a
+		
+
+obj=snl()
+obj.display()
+print(obj.a)
+print(obj.b)
+
+
+-with the help of "del" keyword we can remove the data in python memory
+ex:
+a=10
+print(a)
+del a
+print(a)

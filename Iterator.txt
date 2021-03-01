@@ -1,0 +1,275 @@
+Iterator
+----------
+->iterator is a protocol. if we need iterator objects we can convert class objects into a iterator protocols.
+->if any class should has __iter__ and __next__ methods is there means we can say that is iteratorable class/Iterator.
+ex:
+class powtwo:
+	def __init__(self,max=0):
+		self.max=max#self.max=5
+	def __iter__(self):
+		self.n=0
+		return self
+	def __next__(self):
+		if self.n<=self.max:
+			res=self.n**2
+			return res
+		else:
+			raise StopIteration
+
+pt=powtwo(5)
+
+->__iter__ method will convert class object into iterable object type
+->if we want to convert class object into iter object means we have to use "iter()" function
+ex:
+iter_object = iter(pt)
+->iter method will create iterator object
+->whenever user used "next()" function, iterator object will start the execution on __next__ method.
+->__next__ method it will return the values until it will get False.
+->__next__ method it will handle StopIteration error.
+
+ex:
+class powtwo:
+    def __init__(self,max=0):
+        self.max=max#self.max=5
+    def __iter__(self):
+        self.n=1
+        return self
+    def __next__(self):
+        if self.n<=self.max:#3<=5-->False
+            res=self.n**2#3**2-->9
+            self.n+=1#3+=1==>self.n=3+1#4
+            return res
+        else:#else block
+            raise StopIteration
+
+pt=powtwo(5)
+iter1=iter(pt)
+print(next(iter1))#1
+print(next(iter1))#4
+print(next(iter1))#9
+print(next(iter1))#16
+print(next(iter1))#25
+print(next(iter1))#
+
+->we can use while condition to get the loop continuation. and please find below example
+ex:
+class powtwo:
+    def __init__(self,max=0):
+        self.max=max#self.max=5
+    def __iter__(self):
+        self.n=1
+        return self
+    def __next__(self):
+        if self.n<=self.max:#3<=5-->False
+            res=self.n**2#3**2-->9
+            self.n+=1#3+=1==>self.n=3+1#4
+            return res
+        else:#else block
+            raise StopIteration
+
+pt=powtwo(5)
+iter1=iter(pt)
+while True:
+    try:
+        print(next(iter1))
+    except:
+        break
+
+->we can use for loop also to get the loop continuation. and itself it will handle error(StopIteration).
+ex:
+class powtwo:
+    def __init__(self,max=0):
+        self.max=max#self.max=5
+    def __iter__(self):
+        self.n=1
+        return self
+    def __next__(self):
+        if self.n<=self.max:#3<=5-->False
+            res=self.n**2#3**2-->9
+            self.n+=1#3+=1==>self.n=3+1#4
+            return res
+        else:#else block
+            raise StopIteration
+
+for i in powtwo(5):
+    print(i)
+
+simple iterator example
+------------------------
+ex:
+a=[1,2,3,4]
+iterator_a_object = iter(a)
+print(next(iterator_a_object))#1
+print(next(iterator_a_object))#2
+print(next(iterator_a_object))#3
+print(next(iterator_a_object))#4
+print(next(iterator_a_object))#StopIteration error
+
+ex:
+a=[1,2,3,4]
+for i in a:
+	print(i)
+
+ex:
+a=[1,2,3,4]
+iterator_obj = iter(a)
+while True:
+	try:
+		print(next(iterator_obj))
+	except:
+		break
+
+ex:
+
+class SumTwo:
+    def __init__(self,max=0):#max=10
+        self.max=max#self.max=10
+    def __iter__(self):
+        self.starting=0#2
+        return self
+    def __next__(self):
+        if self.starting<=self.max:#1<=10==True
+            total=self.starting+self.starting#1+1==2
+            self.starting=self.starting+1#1+1==2
+            return total#2
+        else:
+            raise StopIteration
+
+jaggu=SumTwo(10)
+jing=iter(jaggu)
+print(next(jing))#0
+print(next(jing))#2
+print(next(jing))
+print(next(jing))
+print(next(jing))
+print(next(jing))
+print(next(jing))
+print(next(jing))
+print(next(jing))
+print(next(jing))
+print(next(jing))
+print(next(jing))
+            
+ex:
+class SumTwo:
+    def __init__(self,max=0):#max=10
+        self.max=max#self.max=10
+    def __iter__(self):
+        self.starting=0#2
+        return self
+    def __next__(self):
+        if self.starting<=self.max:#1<=10==True
+            total=self.starting+self.starting#1+1==2
+            self.starting=self.starting+1#1+1==2
+            return total#2
+        else:
+            raise StopIteration
+
+jaggu=SumTwo(10)
+jing=iter(jaggu)
+while True:
+    try:
+        print(next(jing))
+    except:
+        break
+
+ex:
+class SumTwo:
+    def __init__(self,max=0):#max=10
+        self.max=max#self.max=10
+    def __iter__(self):
+        self.starting=0#2
+        return self
+    def __next__(self):
+        if self.starting<=self.max:#1<=10==True
+            total=self.starting+self.starting#1+1==2
+            self.starting=self.starting+1#1+1==2
+            return total#2
+        else:
+            raise StopIteration
+
+jaggu=SumTwo(10)
+jing=iter(jaggu)
+for i in jing:
+    print(i)
+
+ex:
+class SumTwo:
+    def __init__(self,max=0):#max=10
+        self.max=max#self.max=10
+    def __iter__(self):
+        self.starting=0#2
+        return self
+    def __next__(self):
+        if self.starting<=self.max:#1<=10==True
+            total=self.starting+self.starting#1+1==2
+            self.starting=self.starting+1#1+1==2
+            return total#2
+        else:
+            raise StopIteration
+
+jaggu=SumTwo(10)
+for i in iter(jaggu):
+    print(i)
+
+ex:
+class SumTwo:
+    def __init__(self,max=0):#max=10
+        self.max=max#self.max=10
+    def __iter__(self):
+        self.starting=0#2
+        return self
+    def __next__(self):
+        if self.starting<=self.max:#1<=10==True
+            total=self.starting+self.starting#1+1==2
+            self.starting=self.starting+1#1+1==2
+            return total#2
+        else:
+            raise StopIteration
+
+
+for i in iter(SumTwo(10)):
+    print(i)
+
+ex:
+class MulTwo:
+    def __init__(self,max=0):
+        self.max=max
+    def __iter__(self):
+        self.starting=0
+        return self
+    def __next__(self):
+        if self.starting<=self.max:
+            total=self.starting*self.starting
+            self.starting=self.starting+1
+            return total
+        else:
+            raise StopIteration
+
+
+for i in iter(MulTwo(10)):
+    print(i)
+
+ex:
+import inflect
+
+class MulTwo:
+    def __init__(self,max=0):
+        self.max=max
+    def __iter__(self):
+        self.starting=0
+        return self
+    def __next__(self):
+        if self.starting<=self.max:
+            total=self.starting*self.starting
+            self.starting=self.starting+1
+            return total
+        else:
+            raise StopIteration
+
+
+for i in iter(MulTwo(10)):
+    p=inflect.engine()
+    w=p.number_to_words(i)
+    print('{} - {}'.format(w,i))
+
